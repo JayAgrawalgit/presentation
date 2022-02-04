@@ -8,21 +8,20 @@ resource "aws_vpc" "myvpc" {
 
 # subnet -> public
 resource "aws_subnet" "public-sub" {
-  for_each = {
-    "ap-south-1a" = "10.10.10.0/24"
-    "ap-south-1b" = "10.10.20.0/24"
-  }
   vpc_id                  = aws_vpc.myvpc.id
-  cidr_block              = each.value
-  availability_zone       = each.key
+  cidr_block              = "10.10.10.0/24"
+  availability_zone       = "ap-south-1a"
   map_public_ip_on_launch = true
+  tags ={
+    "Name" = "public-sub"
+  }
 }
 
 # subnet -> private
 resource "aws_subnet" "private-sub" {
   vpc_id            = aws_vpc.myvpc.id
-  cidr_block        = "10.10.30.0/24"
-  availability_zone = "ap-south-1c"
+  cidr_block        = "10.10.20.0/24"
+  availability_zone = "ap-south-1b"
   tags = {
     "Name" = "private-sub"
   }
@@ -61,5 +60,16 @@ resource "aws_route_table" "private-rt" {
 resource "aws_route_table_association" "private" {
   subnet_id      = aws_subnet.private-sub.id
   route_table_id = aws_route_table.private-rt.id
+  depends_on = [
+    aws_route_table.private-rt, aws_subnet.private-sub
+  ]
 }
 
+# adding public subnet to public rt
+resource "aws_route_table_association" "public" {
+  subnet_id      = aws_subnet.public-sub.id
+  route_table_id = aws_route_table.public-rt.id
+  depends_on = [
+    aws_route_table.public-rt, aws_subnet.public-sub
+  ]
+}

@@ -5,5 +5,5 @@ This module contains,
 3. Routing table (rt)
 4. Internet gateway (igw)
 
-here we are not adding nat becous nat need a fix ip
+here we are not adding nat because nat need a fixed IP
 
