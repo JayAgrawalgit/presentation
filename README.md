@@ -14,3 +14,4 @@ Kubernetes: v1.21
 Jenkins:  
 WordPress:  
 MySQL:  
+kube-proxy: 1.21.2  

@@ -7,3 +7,8 @@ This module contains,
 
 here we are not adding nat because nat need a fixed IP
 
+referance https://registry.terraform.io/providers/hashicorp/aws/2.34.0/docs/guides/eks-getting-started
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+https://antonputra.com/terraform/how-to-create-eks-cluster-using-terraform/#create-eks-cluster-using-terraform
+
+aws eks --region ap-south-1 update-kubeconfig --name my_eks

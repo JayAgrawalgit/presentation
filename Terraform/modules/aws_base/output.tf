@@ -1,7 +1,13 @@
 # vpc
 output "vpc_id" {
-    description = "vpc-id"
+    description = "vpc id"
     value = aws_vpc.myvpc.id
+}
+
+# vpc cidr
+output "vpc_cidr" {
+  description = "vpc cidr"
+  value = aws_vpc.myvpc.cidr_block
 }
 
 # public-sub
