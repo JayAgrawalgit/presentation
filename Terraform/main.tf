@@ -13,7 +13,7 @@ resource "aws_eip" "nat-ip" {
 # nat gateway for private ec2
 resource "aws_nat_gateway" "nat-gw" {
   allocation_id = aws_eip.nat-ip.id
-  subnet_id = module.aws_base.private_sub
+  subnet_id     = module.aws_base.private_sub
   tags = {
     "Name" = "nat-gw"
   }

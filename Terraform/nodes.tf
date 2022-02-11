@@ -13,7 +13,7 @@ resource "aws_iam_role" "eks-node-group-role" {
     Version = "2012-10-17"
   })
   tags = {
-      "owner" = "jay.agrawal"
+    "owner" = "jay.agrawal"
   }
 }
 
