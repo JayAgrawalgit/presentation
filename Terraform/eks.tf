@@ -17,9 +17,9 @@ resource "aws_iam_role" "terraform-eks" {
   ]
 }
 POLICY
-    tags = {
-        "owner" = "jay.agrawal"
-    }
+  tags = {
+    "owner" = "jay.agrawal"
+  }
 }
 
 # aws iam role policy attached to eks cluster policy
@@ -34,9 +34,9 @@ resource "aws_eks_cluster" "myeks" {
   role_arn = aws_iam_role.terraform-eks.arn
 
   vpc_config {
-    subnet_ids         = [
-        module.aws_base.public_sub,
-        module.aws_base.private_sub
+    subnet_ids = [
+      module.aws_base.public_sub,
+      module.aws_base.private_sub
     ]
   }
 
